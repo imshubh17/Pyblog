@@ -20,7 +20,7 @@ db = SQLAlchemy(app)
 
 class Post(db.Model):
     __tablename__ ='post'
-    sno = db.Column(db.Integer, primary_key=True)
+    sno = db.Column(db.Integer, nullable=False)
     title = db.Column(db.Text, nullable=False)
     slug = db.Column(db.Text, nullable=False)
     content = db.Column(db.Text, nullable=False)
@@ -30,7 +30,6 @@ class Post(db.Model):
 
 class Contact(db.Model):
     __tablename__ ='contact'
-    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, nullable=False)
     pn = db.Column(db.Text, nullable=False)
     email = db.Column(db.Text, nullable=False)
@@ -93,6 +92,7 @@ def post_route(post_slug):
 def insert():
     if ('user' in session and session['user']==params['admin_user']):
         if request.method == 'POST':
+            box_id=request.form.get('pid')
             box_title =request.form.get('title')
             box_slug =request.form.get('slug')
             box_content =request.form.get('content')
@@ -100,7 +100,7 @@ def insert():
             box_code = request.form.get('code')
             date=datetime.now()
 
-            post = Post(title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code)
+            post = Post(id=box_id,title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code)
             db.session.add(post)
             db.session.commit()
             return redirect('/dashboard')
