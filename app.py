@@ -175,5 +175,4 @@ def delete(sno):
 
         return redirect("/dashboard")
 
-
 app.run(debug=False)
