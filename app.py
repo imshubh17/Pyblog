@@ -10,15 +10,6 @@ with open('config.json','r') as c:
 app = Flask(__name__)
 app.secret_key = 'super-key-imshubh-done'
 
-app.config.update(
-    MAIL_SERVER = 'smtp.gmail.com',
-    MAIL_PORT = '465',
-    MAIL_USE_SSL = True,
-    MAIL_USERNAME = "noteitdownpro@gmail.com",
-    MAIL_PASSWORD=  "#Ass@12345"
-)
-mail = Mail(app)
-
 local_server=False
 if(local_server):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
@@ -30,13 +21,20 @@ db = SQLAlchemy(app)
 class Post(db.Model):
     __tablename__ ='post'
     sno = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    slug = db.Column(db.String(21), nullable=False)
-    content = db.Column(db.String(250), nullable=False)
+    title = db.Column(db.Text, nullable=False)
+    slug = db.Column(db.Text, nullable=False)
+    content = db.Column(db.Text, nullable=False)
     date = db.Column(db.String(50), nullable=True)
     author = db.Column(db.String(20), nullable=True)
-    code = db.Column(db.String(120), nullable=False)
-    tlink = db.Column(db.String(120), nullable=False)
+    code = db.Column(db.Text, nullable=False)
+
+class Contact(db.Model):
+    __tablename__ ='contact'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, nullable=False)
+    phoneNo = db.Column(db.String(15), nullable=False)
+    email = db.Column(db.String(30), nullable=False)
+    message = db.Column(db.Text, nullable=False)
 
 
 import math
@@ -144,12 +142,9 @@ def contact():
         pn=request.form.get('pn')
         email =request.form.get('email')
         msg =request.form.get('message')
-
-        mail.send_message('New message from ' + name,
-                          sender=email,
-                          recipients=["hitman1771997@gmail.com"],
-                          body=msg + "\n" + pn+"\n"+email
-                          )
+        entry = Contact(name=name, phoneNo=pn, email=email, message=msg)
+        db.session.add(entry)
+        db.session.commit()
         return redirect('/')
     return render_template('contact.html',params=params)
 
@@ -168,4 +163,4 @@ def delete(sno):
         return redirect("/dashboard")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
