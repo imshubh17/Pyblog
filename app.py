@@ -32,8 +32,8 @@ class Contact(db.Model):
     __tablename__ ='contact'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, nullable=False)
-    phoneNo = db.Column(db.String(15), nullable=False)
-    email = db.Column(db.String(30), nullable=False)
+    pn = db.Column(db.Text, nullable=False)
+    email = db.Column(db.Text, nullable=False)
     message = db.Column(db.Text, nullable=False)
 
 
@@ -98,10 +98,9 @@ def insert():
             box_content =request.form.get('content')
             box_author = request.form.get('author')
             box_code = request.form.get('code')
-            box_tlink = request.form.get('tlink')
             date=datetime.now()
 
-            post = Post(title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code,tlink=box_tlink)
+            post = Post(title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code)
             db.session.add(post)
             db.session.commit()
             return redirect('/dashboard')
@@ -117,7 +116,6 @@ def edit(sno):
             box_content =request.form.get('content')
             box_author = request.form.get('author')
             box_code = request.form.get('code')
-            box_tlink = request.form.get('tlink')
             date=datetime.now()
 
             post=Post.query.filter_by(sno=sno).first()
@@ -127,7 +125,6 @@ def edit(sno):
             post.date = date
             post.author = box_author
             post.code = box_code
-            post.tlink = box_tlink
             db.session.commit()
             return redirect('/edit/'+sno)
 
@@ -142,7 +139,7 @@ def contact():
         pn=request.form.get('pn')
         email =request.form.get('email')
         msg =request.form.get('message')
-        entry = Contact(name=name, phoneNo=pn, email=email, message=msg)
+        entry = Contact(name=name, pn=pn, email=email, message=msg)
         db.session.add(entry)
         db.session.commit()
         return redirect('/')
