@@ -30,22 +30,15 @@ db = SQLAlchemy(app)
 class Post(db.Model):
     __tablename__ ='post'
     sno = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(80), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
     slug = db.Column(db.String(21), nullable=False)
-    content = db.Column(db.String(120), nullable=False)
-    date = db.Column(db.String(12), nullable=True)
-    author = db.Column(db.String(12), nullable=True)
+    content = db.Column(db.String(250), nullable=False)
+    date = db.Column(db.String(50), nullable=True)
+    author = db.Column(db.String(20), nullable=True)
     code = db.Column(db.String(120), nullable=False)
     tlink = db.Column(db.String(120), nullable=False)
 
 
-class Contact(db.Model):
-    __tablename__ ='contact'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
-    phoneNo = db.Column(db.String(12), nullable=False)
-    email = db.Column(db.String(30), nullable=False)
-    message = db.Column(db.String(80), nullable=False)
 import math
 @app.route("/")
 def index():
@@ -113,6 +106,7 @@ def insert():
             post = Post(title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code,tlink=box_tlink)
             db.session.add(post)
             db.session.commit()
+            return redirect('/dashboard')
     return render_template('insert.html', params=params)
 
 
@@ -150,15 +144,13 @@ def contact():
         pn=request.form.get('pn')
         email =request.form.get('email')
         msg =request.form.get('message')
-        entry= Contact(name=name,phoneNo=pn,email=email,message=msg)
-        db.session.add(entry)
-        db.session.commit()
 
         mail.send_message('New message from ' + name,
                           sender=email,
                           recipients=["hitman1771997@gmail.com"],
                           body=msg + "\n" + pn+"\n"+email
                           )
+        return redirect('/')
     return render_template('contact.html',params=params)
 
 @app.route("/logout")
@@ -176,4 +168,4 @@ def delete(sno):
         return redirect("/dashboard")
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
