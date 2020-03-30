@@ -101,7 +101,7 @@ def insert():
             box_code = request.form.get('code')
             date=datetime.now()
 
-            post = Post(id=box_id,title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code)
+            post = Post(id=int(box_id),title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code)
             db.session.add(post)
             db.session.commit()
             return redirect('/dashboard')
