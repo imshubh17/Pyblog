@@ -20,7 +20,7 @@ db = SQLAlchemy(app)
 
 class Post(db.Model):
     __tablename__ ='post'
-    sno = db.Column(db.Integer, nullable=False)
+    sno = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
     slug = db.Column(db.Text, nullable=False)
     content = db.Column(db.Text, nullable=False)
@@ -30,6 +30,7 @@ class Post(db.Model):
 
 class Contact(db.Model):
     __tablename__ ='contact'
+    id = db.Column(db.Text, primary_key=True)
     name = db.Column(db.Text, nullable=False)
     pn = db.Column(db.Text, nullable=False)
     email = db.Column(db.Text, nullable=False)
@@ -139,7 +140,8 @@ def contact():
         pn=request.form.get('pn')
         email =request.form.get('email')
         msg =request.form.get('message')
-        entry = Contact(name=name, pn=pn, email=email, message=msg)
+        cid=name[0:2]+pn[0:]+email[0:4]
+        entry = Contact(id=cid,name=name, pn=pn, email=email, message=msg)
         db.session.add(entry)
         db.session.commit()
         return redirect('/')
