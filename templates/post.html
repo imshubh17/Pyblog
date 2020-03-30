@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Blog Entries Column -->
+
+<link rel="stylesheet" href="{{ url_for('static',filename='css/skel.css') }}" />
+			<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" />
+			<link rel="stylesheet" href="{{ url_for('static',filename='css/style-desktop.css') }}" />
+
+        <!-- Blog Post -->
+         <!-- Post Content -->
+<!-- Content -->
+			<div id="content-wrapper">
+				<div id="content">
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+
+								<!-- Main Content -->
+									<section>
+										<header>
+											<h2>{{post.title}}</h2>
+											<h3><span class="caption text-muted">Posted by
+                                            <a href="/about">{{post.author}}</a>
+                                            on {{post.date}}</span></h3>
+										</header>
+
+
+                                        <p> {{post.content}}</p>
+
+
+<pre><code >
+   {{post.code}}
+</code></pre>
+
+                            </section>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    <div class="container">
+<iframe src="{{post.tlink}}" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+    </div>
+
+
+
+{% endblock %}

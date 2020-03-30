@@ -1,0 +1,16 @@
+{
+  "params":
+{
+  "local_server": "True",
+  "local_uri": "mysql://root:@localhost/multistar",
+  "pri_uri": "postgres://rhxiffdsuweflf:297d03e4b495fc9daab168343ab0e6d19ce6a1fbeef3db3f9e8571779c3530fc@ec2-52-23-14-156.compute-1.amazonaws.com:5432/da4nbn7h7194dj",
+
+  "title": "MultiStar",
+
+  "no_of_posts": 3,
+ "login_image":"login.svg",
+    "admin_user":"imshubham",
+    "admin_password": "Passwd@12345"
+}
+
+}

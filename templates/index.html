@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Page Header -->
+ <!-- Custom styles for this template -->
+  <link href="{{ url_for('static',filename='css/clean-blog.min.css') }}" rel="stylesheet">
+
+<!-- Blog Entries Column -->
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+     {% for post in posts %}
+          <div class="post-preview">
+            <a href="/post/{{post.slug}}">
+              <h2 class="post-title">{{ post.title }}  </h2>
+
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#">{{post.author}}</a>
+              on {{post.date}}</p>
+          </div>
+
+          {{post.content[0:143]}}...
+          <hr>
+        </li></a>
+          {% endfor %}
+
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+
+          <li class="page-item left">
+            <a class="page-link" href="{{pre}}">&larr; Previous Page</a>
+          </li>
+
+          <li class="page-item">
+            <a class="page-link" href="{{nst}}">Next Page &rarr;</a>
+          </li>
+
+
+        </ul>
+
+   </div>
+    </div>
+</div>
+
+
+{% endblock %}

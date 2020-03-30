@@ -1,0 +1,40 @@
+  .post-entry .body-text {
+  padding: 30px;
+  background: #fff;
+}
+
+.post-entry .body-text .category {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: .2em;
+  color: #ccc;
+}
+.site-hero > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.post-entry .body-text .category:after {
+  content: "";
+  left: 0;
+  width: 50px;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  bottom: 0;
+  }
+  .site-section {
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn.btn-outline-primary {
+  border-width: 2px;
+  color: #b99365;
+}
+
+.btn.btn-outline-primary:hover, .btn.btn-outline-primary:focus, .btn.btn-outline-primary:active {
+  color: #fff;
+}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5" style="background-image: url('{{ url_for('static',filename='images/big_image_1.jpg') }}');">
+      <div class="container">
+        <div class="row align-items-center site-hero-inner justify-content-center">
+          <div class="col-md-12 text-center">
+
+            <div class="mb-5">
+              <h1>Contact Us</h1>
+              <p>Personal Blogging Website #PyBlog.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+
+    <section class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="mb-5">Contact Form</h2>
+          <form action="/contact" method="post">
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="name">Name</label>
+                      <input type="text" id="name" name="name" class="form-control ">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="phone">Phone</label>
+                      <input type="text" id="phone" name="pn" class="form-control ">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" name="email" class="form-control ">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="message">Write Message</label>
+                      <textarea name="message" id="message" class="form-control " cols="30" rows="8"></textarea>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input type="submit" value="Send Message" class="btn btn-primary">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-5">
+                <h3 class="mb-5">Information</h3>
+                <p class="mb-5"><img src="{{ url_for('static',filename='img/logo.GIF') }}" alt="" class="img-fluid"></p>
+                <p>This web application is made my imshubh17 for personal Blogging on technical content releted to Python.
+                    If you want to suggest anything please contact me and also you can connect me, Thank You.</p>
+              </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+
+    <!-- END section -->
+   {% endblock %}
