@@ -7,6 +7,7 @@ with open('config.json','r') as c:
     params=json.load(c)["params"]
 
 app = Flask(__name__)
+app.secret_key = 'super-key-imshubh-done-mypyblog'
 
 local_server=False
 if(local_server):
