@@ -19,8 +19,8 @@ db = SQLAlchemy(app)
 
 class Post(db.Model):
     __tablename__ ='post'
-    sno = db.Column(db.Integer, nullable=False)
-    title = db.Column(db.Text,  primary_key=True)
+    sno = db.Column(db.Integer,  primary_key=True, default=lambda: uuid.uuid4().hex)
+    title = db.Column(db.Text,  nullable=False )
     slug = db.Column(db.Text, nullable=False)
     content = db.Column(db.Text, nullable=False)
     date = db.Column(db.String(50), nullable=True)
@@ -100,7 +100,7 @@ def insert():
             box_code = request.form.get('code')
             date=datetime.now()
 
-            post = Post(id=box_id,title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code)
+            post = Post(title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code)
             db.session.add(post)
             db.session.commit()
             return redirect('/dashboard')
@@ -117,15 +117,20 @@ def edit(sno):
             box_author = request.form.get('author')
             box_code = request.form.get('code')
             date=datetime.now()
-
-            post=Post.query.filter_by(sno=sno).first()
-            post.title=box_title
-            post.slug = box_slug
-            post.content = box_content
-            post.date = date
-            post.author = box_author
-            post.code = box_code
-            db.session.commit()
+            if sno=='0':
+                post = Post(title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,
+                            code=box_code)
+                db.session.add(post)
+                db.session.commit()
+            else:
+                post=Post.query.filter_by(sno=sno).first()
+                post.title=box_title
+                post.slug = box_slug
+                post.content = box_content
+                post.date = date
+                post.author = box_author
+                post.code = box_code
+                db.session.commit()
             return redirect('/edit/'+sno)
 
         post = Post.query.filter_by(sno=sno).first()
