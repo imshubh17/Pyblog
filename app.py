@@ -131,7 +131,7 @@ def edit(sno):
                 post.author = box_author
                 post.code = box_code
                 db.session.commit()
-            return redirect('/edit/'+sno)
+                return redirect('/edit/'+sno)
 
         post = Post.query.filter_by(sno=sno).first()
         return render_template('edit.html', params=params,post=post)
