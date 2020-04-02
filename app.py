@@ -1,6 +1,5 @@
 from flask import Flask,render_template,request,session,redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_mail import Mail
 import json
 from datetime import datetime
 
@@ -8,7 +7,6 @@ with open('config.json','r') as c:
     params=json.load(c)["params"]
 
 app = Flask(__name__)
-app.secret_key = 'super-key-imshubh-done'
 
 local_server=False
 if(local_server):
@@ -20,7 +18,7 @@ db = SQLAlchemy(app)
 
 class Post(db.Model):
     __tablename__ ='post'
-    sno = db.Column(db.Text, primary_key=True)
+    sno = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
     slug = db.Column(db.Text, nullable=False)
     content = db.Column(db.Text, nullable=False)

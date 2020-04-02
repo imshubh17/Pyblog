@@ -3,7 +3,7 @@
 {
   "local_server": "True",
   "local_uri": "mysql://root:@localhost/multistar",
-  "pri_uri": "postgres://rhxiffdsuweflf:297d03e4b495fc9daab168343ab0e6d19ce6a1fbeef3db3f9e8571779c3530fc@ec2-52-23-14-156.compute-1.amazonaws.com:5432/da4nbn7h7194dj",
+  "pri_uri": "postgres://ydhnhcwjrrorcc:dce75fe9aa8fcaa2e8716ff5783fbec7141d5aac1b89f433fd7e4685385d1b72@ec2-52-86-73-86.compute-1.amazonaws.com:5432/d321cin7ben4ju",
 
   "title": "MultiStar",
 
