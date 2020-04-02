@@ -103,7 +103,7 @@ def insert():
             post = Post(title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code)
             db.session.add(post)
             db.session.commit()
-            
+
     return render_template('insert.html', params=params)
 
 
