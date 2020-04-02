@@ -13,13 +13,13 @@ if(local_server):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = params['pri_uri']
-
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class Post(db.Model):
     __tablename__ ='post'
-    sno = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.Text, nullable=False)
+    sno = db.Column(db.Integer, nullable=False)
+    title = db.Column(db.Text,  primary_key=True)
     slug = db.Column(db.Text, nullable=False)
     content = db.Column(db.Text, nullable=False)
     date = db.Column(db.String(50), nullable=True)
