@@ -103,7 +103,7 @@ def insert():
             post = Post(title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,code=box_code)
             db.session.add(post)
             db.session.commit()
-            return redirect('/dashboard')
+            
     return render_template('insert.html', params=params)
 
 
@@ -117,21 +117,16 @@ def edit(sno):
             box_author = request.form.get('author')
             box_code = request.form.get('code')
             date=datetime.now()
-            if sno=='0':
-                post = Post(title=box_title, slug=box_slug, content=box_content, date=date, author=box_author,
-                            code=box_code)
-                db.session.add(post)
-                db.session.commit()
-            else:
-                post=Post.query.filter_by(sno=sno).first()
-                post.title=box_title
-                post.slug = box_slug
-                post.content = box_content
-                post.date = date
-                post.author = box_author
-                post.code = box_code
-                db.session.commit()
-                return redirect('/edit/'+sno)
+
+            post=Post.query.filter_by(sno=sno).first()
+            post.title=box_title
+            post.slug = box_slug
+            post.content = box_content
+            post.date = date
+            post.author = box_author
+            post.code = box_code
+            db.session.commit()
+            return redirect('/edit/'+sno)
 
         post = Post.query.filter_by(sno=sno).first()
         return render_template('edit.html', params=params,post=post)
