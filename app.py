@@ -19,7 +19,7 @@ db = SQLAlchemy(app)
 
 class Post(db.Model):
     __tablename__ ='post'
-    sno = db.Column(db.Integer,  primary_key=True, default=lambda: uuid.uuid4().hex)
+    sno = db.Column(db.Integer,  primary_key=True, autoincrement=True)
     title = db.Column(db.Text,  nullable=False )
     slug = db.Column(db.Text, nullable=False)
     content = db.Column(db.Text, nullable=False)
