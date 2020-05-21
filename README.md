@@ -57,10 +57,12 @@ Our tech stack will include:
   ```
 
 #### Web-App Screenshot 
-![Home page](https://github.com/imshubh17/Pyblog/blob/master/static/img/home.PNG "Home"){:height="100px" width="100px"}
+![Home page](https://github.com/imshubh17/Pyblog/blob/master/static/img/home.PNG "Home")
 
-![Contact Form](https://github.com/imshubh17/Pyblog/blob/master/static/img/contact.PNG "Contact"){:height="100px" width="100px"}
+![Contact Form](https://github.com/imshubh17/Pyblog/blob/master/static/img/contact.PNG "Contact")
 
-![Login page](https://github.com/imshubh17/Pyblog/blob/master/static/img/login.PNG "Login page"){:height="100px" width="100px"}
+![Login page](https://github.com/imshubh17/Pyblog/blob/master/static/img/login.PNG "Login page")
 
-![Dashboard page](https://github.com/imshubh17/Pyblog/blob/master/static/img/dashboard.PNG "Dashboard aticivity page"){:height="100px" width="100px"}
+![Dashboard page](https://github.com/imshubh17/Pyblog/blob/master/static/img/dashboard.PNG "Dashboard aticivity page")
+
+* Happy to share in public to use as a starter project and improve this project. Thanks!!!
