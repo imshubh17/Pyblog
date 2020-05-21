@@ -12,15 +12,15 @@
      {% for post in posts %}
           <div class="post-preview">
             <a href="/post/{{post.slug}}">
-              <h2 class="post-title">{{ post.title }}  </h2>
+              <h2 class="post-title">{{ post["title"] }}  </h2>
 
             </a>
             <p class="post-meta">Posted by
-              <a href="#">{{post.author}}</a>
-              on {{post.date}}</p>
+              <a href="#">{{post["author"]}}</a>
+              on {{post["date"]}}</p>
           </div>
 
-          {{post.content[0:143]}}...
+          {{post["content"][:150]}}...
           <hr>
         </li></a>
           {% endfor %}

@@ -19,18 +19,18 @@
 								<!-- Main Content -->
 									<section>
 										<header>
-											<h2>{{post.title}}</h2>
+											<h2>{{post["title"]}}</h2>
 											<h3><span class="caption text-muted">Posted by
-                                            <a href="/about">{{post.author}}</a>
-                                            on {{post.date}}</span></h3>
+                                            <a href="/about">{{post["author"]}}</a>
+                                            on {{post["date"]}}</span></h3>
 										</header>
 
 
-                                        <p> {{post.content}}</p>
+                                        <p> {{post["content"]}}</p>
 
 
 <pre><code >
-   {{post.code}}
+   {{post["code"]}}
 </code></pre>
 
                             </section>
